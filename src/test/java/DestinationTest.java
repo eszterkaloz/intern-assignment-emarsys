@@ -7,11 +7,12 @@ import java.util.Arrays;
 
 
 public class DestinationTest {
-    private Destination planner, z, w, v, y, u, x;
+    private Destination z, w, v, y, u, x;
+    private HolidayPlanner planner;
 
     @Before
     public void setUp() throws Exception {
-        planner = new Destination("holidayPlanner");
+        planner = new HolidayPlanner();
         z = new Destination("z");
         w = new Destination("w");
         v = new Destination("v");
