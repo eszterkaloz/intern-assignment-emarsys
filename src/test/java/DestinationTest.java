@@ -57,6 +57,15 @@ public class DestinationTest {
         Assert.assertEquals(Arrays.asList("z", "w", "v", "y", "u", "x"), planner.planDestination(u, v, w, y, z, x));
     }
 
+    @Test(expected = Exception.class)
+    public void planDestination_MultipleInput_WithCyclicDependencies() throws Exception {
+        x.setDependencies(Arrays.asList(y));
+        y.setDependencies(Arrays.asList(z));
+        z.setDependencies(Arrays.asList(x));
+
+        planner.planDestination(x, y, z);
+    }
+
     @After
     public void tearDown() throws Exception {
         z = null;
@@ -65,5 +74,6 @@ public class DestinationTest {
         y = null;
         u = null;
         x = null;
+        planner = null;
     }
 }
